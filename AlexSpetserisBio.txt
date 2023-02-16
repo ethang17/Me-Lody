@@ -1,0 +1,2 @@
+Hello my name is Alex Spetseris. I am a first year computer science major. 
+This is my first time cloning a gitlab project.
