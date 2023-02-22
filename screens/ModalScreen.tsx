@@ -1,7 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
+import { Platform, StyleSheet, Button, Alert, Pressable } from 'react-native';
 import { Text, View } from '../components/Themed';
 
 export default function ModalScreen() {
@@ -13,7 +11,20 @@ export default function ModalScreen() {
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+      <Pressable onPress={()=> Alert.alert('This Will Redirect to a Profile Screen')}>
+        <View style = {styles.blockButton} >
+          <Text style = {styles.buttonLabel}>
+            Profile
+          </Text>
+        </View>
+        <View style = {styles.blockButton} >
+          <Text style = {styles.buttonLabel}>
+            Button 2
+          </Text>
+        </View>
+      </Pressable>
     </View>
+
   );
 }
 
@@ -32,4 +43,17 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  blockButton: {
+    height: 50,
+    width: 200,
+    backgroundColor: '#222',
+    alignItems: 'center',
+    paddingVertical: 12,
+    margin: 2
+  },
+  buttonLabel:{
+    fontSize: 15,
+    fontWeight: 'bold',
+
+  }
 });
