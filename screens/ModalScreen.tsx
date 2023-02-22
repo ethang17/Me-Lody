@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet, Button, Alert, Pressable } from 'react-native';
 import { Text, View } from '../components/Themed';
+import { RootStackScreenProps } from '../types';
 
-export default function ModalScreen() {
+export default function ModalScreen({ navigation }: RootStackScreenProps<'Modal'>) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Settings</Text>
@@ -11,7 +12,7 @@ export default function ModalScreen() {
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
-      <Pressable onPress={()=> Alert.alert('This Will Redirect to a Profile Screen')}>
+      <Pressable onPress={() => navigation.replace('Profile')}>
         <View style = {styles.blockButton} >
           <Text style = {styles.buttonLabel}>
             Profile
