@@ -3,7 +3,7 @@ import { Platform, StyleSheet, Button, Alert, Pressable } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { RootStackScreenProps } from '../types';
 
-export default function ModalScreen({ navigation }: RootStackScreenProps<'Modal'>) {
+export default function SettingsScreen({ navigation }: RootStackScreenProps<'Settings'>) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Settings</Text>
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
   blockButton: {
     height: 50,
-    width: 200,
+    width: 100,
     backgroundColor: '#222',
     alignItems: 'center',
     paddingVertical: 12,
