@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet, TextInput } from 'react-native';
-import { Alert } from 'react-native';
+import { Alert, Pressable } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
 import changeName, { showName } from '../components/input';
 import { Text, View } from '../components/Themed';
 import setName from '../components/input'
+import { RootStackScreenProps } from '../types';
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ navigation }: RootStackScreenProps<'Profile'>) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Profile</Text>
@@ -14,7 +15,9 @@ export default function ProfileScreen() {
       <Text>This is your profile</Text>
     <TextInput
       onChangeText={(val) => setName(val)}
+      placeholder  = 'e.g NAME'
     />
+   <Pressable onPress={() => navigation.replace('Profile')}><Text>Press Me To Save What You Entered</Text></Pressable>
     <Text>
       {showName()}
     </Text>
