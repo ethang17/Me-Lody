@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
-
+import { Platform, StyleSheet, TextInput } from 'react-native';
+import { Alert } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
+import changeName, { showName } from '../components/input';
 import { Text, View } from '../components/Themed';
+import setName from '../components/input'
 
 export default function ProfileScreen() {
   return (
@@ -10,7 +12,12 @@ export default function ProfileScreen() {
       <Text style={styles.title}>Profile</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <Text>This is your profile</Text>
-
+    <TextInput
+      onChangeText={(val) => setName(val)}
+    />
+    <Text>
+      {showName()}
+    </Text>
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
     </View>
