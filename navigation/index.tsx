@@ -19,6 +19,7 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import RegisterScreen from '../screens/RegisterScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -44,7 +45,10 @@ function RootNavigator() {
       <Stack.Screen name="Profile" component={ProfileScreen} options={{ title: 'Profile' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Settings" component={SettingsScreen} />
-        </Stack.Group>
+      </Stack.Group>
+      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+        <Stack.Screen name="Register" component={RegisterScreen} />
+      </Stack.Group>
 
 
     </Stack.Navigator>
@@ -74,7 +78,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate('Settings')}
+              onPress={() => navigation.navigate('Register')}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}>
