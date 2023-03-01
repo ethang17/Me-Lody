@@ -1,5 +1,19 @@
-
+import { RootTabScreenProps } from "../types"
+import { View , Text} from "./Themed"
 let keys= []
+
+
+export function makeAccount(first:string, last:string, user:string, email:string, pass:string, confirmed:string){
+    if(checkPass(pass, confirmed)){
+        return(
+            <View>
+                <Text>Nah</Text>
+            </View>
+        )
+    }else{
+
+    }
+}
 
 export function checkPass(pass:string, confirm:string){
     let works = false

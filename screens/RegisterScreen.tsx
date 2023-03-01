@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, TextInput } from 'react-native';
-import { LoginKey, checkPass } from '../components/Register';
+import { Platform, Pressable, StyleSheet, TextInput } from 'react-native';
+import { LoginKey, checkPass, makeAccount } from '../components/Register';
 import { Text, View } from '../components/Themed';
 
-let first, last, user, email, pass, confirm
+let first:string, last:string, user:string, email:string, pass:string, confirm: string
 
 export default function RegisterScreen() {
     return (
@@ -13,25 +13,33 @@ export default function RegisterScreen() {
             <Text style={styles.section}>FIRST NAME:</Text>
             <TextInput style={styles.input}
                 placeholder='John'
-                onChangeText={}
+                onChangeText={(val) => first = val}
             />
             <Text style={styles.section}>LAST NAME:</Text>
             <TextInput style={styles.input}
                 placeholder='Smith'
+                onChangeText={(val) => last = val}
             />
             <Text style={styles.section}>EMAIL:</Text>
             <TextInput style={styles.input}
                 placeholder='e.g. johnsmith@gmail.com'
+                onChangeText={(val) => email = val}
             />
             <Text style={styles.section}>PASSWORD:</Text>
             <TextInput style={styles.input}
                 placeholder=''
+                onChangeText={(val) => pass = val}
             />
             <Text style={styles.section}>CONFIRM PASSWORD:</Text>
             <TextInput style={styles.input}
                 placeholder=''
+                onChangeText={(val) => confirm = val}
             />
-
+            <Pressable onPress={()=>makeAccount(first, last, user, email, pass, confirm)}>
+                <View style = {styles.blockButton}>
+                    <Text>SAVE</Text>
+                </View>
+            </Pressable>
 
 
             {/* Use a light status bar on iOS to account for the black space above the modal */}
@@ -67,5 +75,13 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#777',
         marginBottom: 5,
-    }
+    },
+    blockButton: {
+        height: 50,
+        width: 100,
+        backgroundColor: '#222',
+        alignItems: 'center',
+        paddingVertical: 12,
+        margin: 2
+      },
 });
