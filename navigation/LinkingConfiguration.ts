@@ -30,6 +30,8 @@ const linking: LinkingOptions<RootStackParamList> = {
       Settings: 'Settings',
       NotFound: '*',
       Profile: 'Profile',
+
+
     },
   },
 };
