@@ -4,26 +4,41 @@ import React, {useState} from 'react';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import {TextInput} from 'react-native';
+import { useColorScheme, Image } from 'react-native';
+
 export default function LoginScreen() {
   const [text, setText] = useState('');
+  const scheme = useColorScheme();
+  const [name, setName] = useState("");
   return (
     <View style={styles.container}>
+      
       <Text style={styles.title}>Sign-In</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       
-
+      
       <TextInput style={styles.textInputStyle}
-        placeholderTextColor='white'
+      /*style={{ color: scheme === 'dark' ? 'white' : 'black'}}*/
+
+        
+        placeholderTextColor='black'
         placeholder="Enter your Username"
+        maxLength={16}
         onChangeText={newText => setText(newText)}
         
       /> 
-      <TextInput style={styles.textInputStyle}
-        placeholderTextColor='white'
+      <TextInput  
+        
+        secureTextEntry={true}
+        style={styles.textInputStyle}
+        placeholderTextColor='black'
         placeholder="Enter your Password"
+        
+        onSubmitEditing={(value) => setName(value.nativeEvent.text)}
         onChangeText={newText2 => setText(newText2)}
         
       /> 
+      <Text>Your password, {name} </Text> 
       <Text style={{padding: 10, fontSize: 42}}>
         
     
@@ -54,8 +69,16 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   textInputStyle: {
-    color: 'white',
-    height: 40
+    height: 40,
+    borderColor: 'black',
+    borderWidth: 2,
+    borderRadius: 10,
+    marginVertical: 5,
+    
+    
+
     }
+  
+
 
 });
