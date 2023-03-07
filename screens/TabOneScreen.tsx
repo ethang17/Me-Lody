@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-
+import { getKeys } from '../components/makeAccount';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
@@ -12,6 +12,7 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
         <Text style={styles.title}>Me-Lody</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
         <Text>Here is where you will find your friends' posts for the day</Text>
+
       </View>
     );
   }

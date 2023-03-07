@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, Pressable, StyleSheet, TextInput } from 'react-native';
-import { LoginKey, checkPass, makeAccount } from '../components/Register';
 import { Text, View } from '../components/Themed';
+import { RootStackScreenProps } from '../types';
+import { makeAccount, getKeys} from '../components/makeAccount';
 
-let first:string, last:string, user:string, email:string, pass:string, confirm: string
-
-export default function RegisterScreen() {
+let first: string, last: string, user: string, email: string, pass: string, confirm: string
+let saved = ''
+export default function RegisterScreen({ navigation }: RootStackScreenProps<'Register'>) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Register</Text>
@@ -35,17 +36,44 @@ export default function RegisterScreen() {
                 placeholder=''
                 onChangeText={(val) => confirm = val}
             />
-            <Pressable onPress={()=>makeAccount(first, last, user, email, pass, confirm)}>
-                <View style = {styles.blockButton}>
+            <Pressable onPress={() => {
+                if (checkPass(pass, confirm)) {
+                    saved = 'SAVED DATA';
+                    makeAccount(first, last, user, email, pass)
+                    navigation.replace('Register')
+                }else{
+                    saved = 'ERROR PASSWORDS DID NOT MATCH'
+                    navigation.replace('Register')
+                }
+            }
+            }>
+                <View style={styles.blockButton}>
                     <Text>SAVE</Text>
                 </View>
             </Pressable>
+            <Pressable onPress={() => {
+                saved = ''
+                navigation.replace('Root')
+                }}>
+                <View style={styles.blockButton}>
+                    <Text style={styles.blockButton} >GO TO LOGIN</Text>
+                </View>
+            </Pressable>
+            <Text>{}</Text>
 
 
             {/* Use a light status bar on iOS to account for the black space above the modal */}
             <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
         </View>
     );
+}
+
+export function checkPass(pass:string, confirm:string){
+    let works = false
+    if (pass==confirm){
+        works = true
+    }
+    return works
 }
 
 const styles = StyleSheet.create({
@@ -82,6 +110,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#222',
         alignItems: 'center',
         paddingVertical: 12,
-        margin: 2
-      },
+        margin: 2,
+        color: 'white',
+    },
 });
