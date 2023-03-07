@@ -4,6 +4,7 @@ import { Text, View } from '../components/Themed';
 import { RootStackScreenProps } from '../types';
 import { makeAccount, getKeys} from '../components/makeAccount';
 
+
 let first: string, last: string, user: string, email: string, pass: string, confirm: string
 let saved = ''
 export default function RegisterScreen({ navigation }: RootStackScreenProps<'Register'>) {
@@ -20,6 +21,11 @@ export default function RegisterScreen({ navigation }: RootStackScreenProps<'Reg
             <TextInput style={styles.input}
                 placeholder='Smith'
                 onChangeText={(val) => last = val}
+            />
+            <Text style={styles.section}>USER:</Text>
+            <TextInput style={styles.input}
+                placeholder='jsmith'
+                onChangeText={(val) => user = val}
             />
             <Text style={styles.section}>EMAIL:</Text>
             <TextInput style={styles.input}
@@ -59,7 +65,7 @@ export default function RegisterScreen({ navigation }: RootStackScreenProps<'Reg
                     <Text style={styles.blockButton} >GO TO LOGIN</Text>
                 </View>
             </Pressable>
-            <Text>{}</Text>
+            <Text>{saved}</Text>
 
 
             {/* Use a light status bar on iOS to account for the black space above the modal */}
@@ -70,7 +76,7 @@ export default function RegisterScreen({ navigation }: RootStackScreenProps<'Reg
 
 export function checkPass(pass:string, confirm:string){
     let works = false
-    if (pass==confirm){
+    if (pass==confirm && pass!=undefined){
         works = true
     }
     return works
