@@ -3,8 +3,10 @@ import { getKeys } from '../components/makeAccount';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
-let signedIn = true
-
+let signedIn = false
+export function setSignedIn(bool: boolean){
+  signedIn = bool
+}
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   if (signedIn == true) {
     return (
@@ -17,7 +19,13 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
     );
   }
   else {
+    <View style={styles.container}>
+    <Text style={styles.title}>Me-Lody</Text>
+    <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+    <Text>Here is where you will find your friends' posts for the day</Text>
 
+  </View>
+    navigation.replace('Register')
   }
 }
 

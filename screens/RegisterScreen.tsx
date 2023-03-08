@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Platform, Pressable, StyleSheet, TextInput } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { RootStackScreenProps } from '../types';
-import { makeAccount, getKeys} from '../components/makeAccount';
+import { makeAccount, checkLogin} from '../components/makeAccount';
 
 
 let first: string, last: string, user: string, email: string, pass: string, confirm: string
@@ -65,11 +65,12 @@ export default function RegisterScreen({ navigation }: RootStackScreenProps<'Reg
                     <Text style={styles.blockButton} >GO TO LOGIN</Text>
                 </View>
             </Pressable>
-            <Text>{saved}</Text>
+            <Text>{checkLogin('edg', '123')}</Text>
 
 
             {/* Use a light status bar on iOS to account for the black space above the modal */}
             <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+
         </View>
     );
 }
