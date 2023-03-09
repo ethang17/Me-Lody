@@ -1,12 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, Pressable } from 'react-native';
 import React, {useState} from 'react';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import {TextInput} from 'react-native';
 import { useColorScheme, Image } from 'react-native';
+import Navigation from '../navigation';
+import { RootStackScreenProps } from '../types';
+import { setSignedIn } from './TabOneScreen';
+import { checkLogin } from '../components/makeAccount';
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
   const [text, setText] = useState('');
   const scheme = useColorScheme();
   const [name, setName] = useState("");
@@ -35,16 +39,28 @@ export default function LoginScreen() {
         placeholder="Enter your Password"
         
         onSubmitEditing={(value) => setName(value.nativeEvent.text)}
-        onChangeText={newText2 => setText(newText2)}
+
         
       /> 
-      <Text>Your password, {name} </Text> 
+      <Pressable
+      onPress={() => {
+        if(checkLogin(text, name)){
+          setSignedIn(true)
+          navigation.replace('Root')
+        }
+      }}>
+        <Text>SUBMIT</Text>
+      </Pressable>
+      <Pressable
+      onPress={() => {navigation.replace('Register')}}>
+        <Text>I Do Not Have An Account</Text>
+      </Pressable>
       <Text style={{padding: 10, fontSize: 42}}>
         
     
           
       </Text>
-      
+
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />

@@ -25,7 +25,7 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
     <Text>Here is where you will find your friends' posts for the day</Text>
 
   </View>
-    navigation.replace('Register')
+    navigation.replace('Login')
   }
 }
 
