@@ -19,6 +19,8 @@ import TabTwoScreen from '../screens/TabTwoScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import LoginScreen from '../screens/LoginScreen';
+
 import RegisterScreen from '../screens/RegisterScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
@@ -66,10 +68,18 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Login"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
+     <BottomTab.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{
+          title: 'Login',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
       <BottomTab.Screen
         name="TabOne"
         component={TabOneScreen}
@@ -100,6 +110,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
+
 
 
     </BottomTab.Navigator>
