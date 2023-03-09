@@ -2,6 +2,7 @@
 import { setSignedIn } from "../screens/TabOneScreen"
 
 export const keys = []
+keys[0] = ['Admin', 'Admin', 'Admin', 'Admin@Me-Lody.com', '1234']
 let currentUser = ''
 let currentUserKey = ''
 export function makeAccount(first, last, user, email, pass){
