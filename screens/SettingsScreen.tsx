@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   blockButton: {
     height: 50,
     width: 100,
-    backgroundColor: '#222',
+    backgroundColor: '#DDD',
     alignItems: 'center',
     paddingVertical: 12,
     margin: 2
