@@ -18,11 +18,6 @@ export default function SettingsScreen({ navigation }: RootStackScreenProps<'Set
             Profile
           </Text>
         </View>
-        <View style = {styles.blockButton} >
-          <Text style = {styles.buttonLabel}>
-            Button 2
-          </Text>
-        </View>
       </Pressable>
     </View>
 
