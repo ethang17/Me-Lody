@@ -1,6 +1,8 @@
 {
   "expo": {
-    "name": "me-lody1",
+    "name": "Me-Lody",
+    "privacy": "public",
+    "description": "Share Music With Friends",
     "slug": "me-lody1",
     "version": "1.0.0",
     "orientation": "portrait",

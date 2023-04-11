@@ -65,7 +65,6 @@ export default function RegisterScreen({ navigation }: RootStackScreenProps<'Reg
                     <Text style={styles.blockButton} >GO TO LOGIN</Text>
                 </View>
             </Pressable>
-            <Text>{checkLogin('edg', '123')}</Text>
 
 
             {/* Use a light status bar on iOS to account for the black space above the modal */}
