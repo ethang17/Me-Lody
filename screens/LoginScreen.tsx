@@ -10,6 +10,7 @@ import { RootStackScreenProps } from '../types';
 import { setSignedIn } from './TabOneScreen';
 import { checkLogin } from '../components/makeAccount';
 
+
 export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
   const [text, setText] = useState('');
   const scheme = useColorScheme();
@@ -18,6 +19,7 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
     <View style={styles.container}>
       
       <Text style={styles.title}>Login</Text>
+
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       
       

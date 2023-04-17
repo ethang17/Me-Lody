@@ -6,12 +6,18 @@ import { Text, View } from '../components/Themed';
 import { useNavigation } from '@react-navigation/native';
 import { CompositeScreenProps } from '@react-navigation/native';
 import { RootStackScreenProps } from '../types';
+import { setSongArtist ,setSongName } from '../components/entries';
 
 
 export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>) {
     const [song, setSong] = useState('song')
+    const [artist, setArtist] = useState('artist')
     const saveSong = () =>{
-        navigation.navigate('Root');
+      /*functions imported from entries.js, sets the varibale within that file to the desired song and artist*/
+      /*Notice setSongName is for the entry, setSong is for this file and the preview*/
+      setSongName(song)
+      setSongArtist(artist)
+      navigation.navigate('Root');
     };
 
         return (
@@ -20,12 +26,16 @@ export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>)
             style={styles.input}
             placeholder='Enter a Song' 
             onChangeText={(val) => setSong(val)}/>
+            <TextInput 
+            style={styles.input}
+            placeholder='Enter the Artist' 
+            onChangeText={(val) => setArtist(val)}/>
 
-            <Text> The song you will post is: {song}</Text>
+            <Text> The song you will post is: {song} by {artist}</Text>
 
             <Button
                 title='Post Song'
-                mode='contained'
+                
                 onPress={saveSong} />
           </View>
         );

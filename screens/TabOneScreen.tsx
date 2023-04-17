@@ -1,10 +1,8 @@
 import { StyleSheet, Pressable } from 'react-native';
-import { useState } from 'react';
-import { getKeys } from '../components/makeAccount';
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import { useRoute } from '@react-navigation/native';
+import { entry } from '../components/entries';
 
 let signedIn = false
 export function setSignedIn(bool: boolean){
@@ -18,7 +16,8 @@ const route = useRoute();
       <View style={styles.container}>
         <Text style={styles.title}>Me-Lody</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        <Text>Here is where you will find your friends' posts for the day</Text>
+        {/*calls the entry function which returns the song and artist, imported from entries.js*/}
+        {entry()}
         <View style={styles.separator} lightColor='#eee' darkColor="rgba(255,255,255,0.1)" />
       <Pressable onPress={() => navigation.replace('Post')} 
       style={styles.link}> 
