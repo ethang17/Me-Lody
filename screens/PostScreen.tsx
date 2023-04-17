@@ -6,22 +6,30 @@ import { Text, View } from '../components/Themed';
 import { useNavigation } from '@react-navigation/native';
 import { CompositeScreenProps } from '@react-navigation/native';
 import { RootStackScreenProps } from '../types';
+import { useRoute } from "@react-navigation/native"
+import TabOneScreen from './TabOneScreen';
+import { getCurrentUser } from '../components/makeAccount';
 
-
+let song = ''
+function setSong(input:string){
+  song = input
+}
 export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>) {
-    const [song, setSong] = useState('song')
+    
+    
+    const test = "songname"
     const saveSong = () =>{
-        navigation.navigate('Root');
-    };
+        navigation.navigate('Root')
+        
+    }; 
 
         return (
           <View style={styles.container}>
             <TextInput 
             style={styles.input}
             placeholder='Enter a Song' 
+            
             onChangeText={(val) => setSong(val)}/>
-
-            <Text> The song you will post is: {song}</Text>
 
             <Button
                 title='Post Song'
@@ -29,8 +37,17 @@ export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>)
                 onPress={saveSong} />
           </View>
         );
+        
       };
-
+export function postedSong(){
+  if(song==''){
+    return 'No songs posted'
+  }
+  else;
+    return song+' Posted by ' + getCurrentUser()
+    }
+    
+      
 const styles = StyleSheet.create({
   container: {
     flex: 1,
