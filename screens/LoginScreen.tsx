@@ -3,12 +3,13 @@ import { Platform, StyleSheet, Pressable } from 'react-native';
 import React, { useState } from 'react';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
-import { TextInput } from 'react-native';
-import { useColorScheme, Image } from 'react-native';
+import {TextInput, Image} from 'react-native';
+import { useColorScheme } from 'react-native';
 import Navigation from '../navigation';
 import { RootStackScreenProps } from '../types';
 import { setSignedIn } from './TabOneScreen';
 import { checkLogin } from '../components/makeAccount';
+
 
 export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
   const [text, setText] = useState('');
@@ -16,11 +17,13 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
   const [name, setName] = useState("");
   return (
     <View style={styles.container}>
-
+      <View style={styles.logo}>
+      <Image source={require('../assets/images/logo-color.png')} />
+      </View>
       <Text style={styles.title}>Login</Text>
-      <View style={styles.separator}/>
+      <View style={styles.separator} lightColor="#f4c5cc" darkColor="rgba(41,41,95,0.1)" />
 
-
+      
       <TextInput style={styles.textInputStyle}
         /*style={{ color: scheme === 'dark' ? 'white' : 'black'}}*/
 
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:"#111"
+    backgroundColor: 'rgb(204, 197, 244 )'
   },
   title: {
     fontSize: 25,
@@ -81,41 +84,33 @@ const styles = StyleSheet.create({
     color:"rgb(204, 197, 244 )"
   },
   separator: {
-    marginVertical: 30,
-    height: 1,
+    marginVertical: 3,
+    height: 0,
     width: '80%',
     backgroundColor: 'white',
   },
   textInputStyle: {
-    height: 40,
-    width: 200,
-    borderColor: 'rgb(204, 197, 244 )',
+    height: 50,
+    width: 250,
+    borderColor: 'rgb(41, 41, 95)',
     borderWidth: 2,
-    borderRadius: 10,
-    marginVertical: 5,
+    borderRadius: 40,
+    marginVertical: 3,
+  },
+  submitStyle: {
+    fontWeight: 'bold',
+    marginTop: 16,
+    paddingVertical: 8,
+    borderWidth: 4,
+    borderColor: 'rgb(41, 41, 95)',
+    borderRadius: 6,
+    backgroundColor: '#61dafb',
+    color: 'rgb(204, 197, 244)',
     textAlign: 'center',
-    color:"rgb(204, 197, 244 )",
+    fontSize: 30,
   },
-  button: {
-    height: 40,
-    width: 100,
-    backgroundColor: "rgb(41, 41, 95 )",
-    borderColor: "rgb(204, 197, 244 )",
-    borderWidth: 2,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 5,
-  },
-  buttonText: {
-    color: "rgb(204, 197, 244 )",
-    fontWeight: "bold",
-    margin: 5,
-  },
-  blankSpace:{
-    height: 50
-  }
 
+  
 
 
 });
