@@ -15,7 +15,7 @@ export default function SettingsScreen({ navigation }: RootStackScreenProps<'Set
       <Pressable onPress={() => navigation.replace('Profile')}>
         <View style = {styles.blockButton} >
           <Text style = {styles.buttonLabel}>
-            Profile
+            User Profile
           </Text>
         </View>
       </Pressable>
