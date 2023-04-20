@@ -5,6 +5,7 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import { useRoute } from '@react-navigation/native';
+import {Image} from 'expo-image'
 
 let signedIn = false
 export function setSignedIn(bool: boolean){
@@ -15,6 +16,7 @@ const route = useRoute();
 
   if (signedIn == true) {
     return (
+
       <View style={styles.container}>
         <Text style={styles.title}>Me-Lody</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
