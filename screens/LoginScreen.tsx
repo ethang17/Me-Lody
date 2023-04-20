@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet, Pressable } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import {TextInput, Image} from 'react-native';
@@ -25,42 +25,43 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
 
       
       <TextInput style={styles.textInputStyle}
-        /*style={{ color: scheme === 'dark' ? 'white' : 'black'}}*/
+      /*style={{ color: scheme === 'dark' ? 'white' : 'black'}}*/
 
-
-        placeholderTextColor="rgb(204, 197, 244 )"
+        
+        placeholderTextColor='black'
         placeholder="Enter your Username"
         maxLength={16}
         onChangeText={newText => setText(newText)}
-
-      />
-      <TextInput style={styles.textInputStyle}
-
+        
+      /> 
+      <TextInput  
+        
         secureTextEntry={true}
-        placeholderTextColor="rgb(204, 197, 244 )"
+        style={styles.textInputStyle}
+        placeholderTextColor='black'
         placeholder="Enter your Password"
-
+        
         onSubmitEditing={(value) => setName(value.nativeEvent.text)}
-      />
-      <View style={styles.blankSpace}/>
+
+        
+      /> 
       <Pressable
-        style={styles.button}
-        onPress={() => {
-          if (checkLogin(text, name)) {
-            setSignedIn(true)
-            navigation.replace('Root')
-          }
-        }}>
-        <Text style={styles.buttonText}>SUBMIT</Text>
+      onPress={() => {
+        if(checkLogin(text, name)){
+          setSignedIn(true)
+          navigation.replace('Root')
+        }
+      }}>
+        <Text>SUBMIT</Text>
       </Pressable>
       <Pressable
-        onPress={() => { navigation.replace('Register') }}>
-        <Text style={styles.buttonText}>I Do Not Have An Account</Text>
+      onPress={() => {navigation.replace('Register')}}>
+        <Text>I Do Not Have An Account</Text>
       </Pressable>
-      <Text style={{ padding: 10, fontSize: 42 }}>
-
-
-
+      <Text style={{padding: 10, fontSize: 42}}>
+        
+    
+          
       </Text>
 
 
@@ -81,13 +82,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 25,
     fontWeight: 'bold',
-    color:"rgb(204, 197, 244 )"
   },
   separator: {
     marginVertical: 3,
     height: 0,
     width: '80%',
-    backgroundColor: 'white',
   },
   textInputStyle: {
     height: 50,

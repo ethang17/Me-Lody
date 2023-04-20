@@ -5,7 +5,7 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import { useRoute } from '@react-navigation/native';
-import {Image} from 'expo-image'
+
 
 let signedIn = false
 export function setSignedIn(bool: boolean){
