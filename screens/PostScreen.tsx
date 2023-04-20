@@ -29,7 +29,9 @@ export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>)
                 onPress={saveSong} />
           </View>
         );
+        
       };
+      
 
 const styles = StyleSheet.create({
   container: {
