@@ -86,11 +86,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        backgroundColor: 'rgb(204, 197, 244)',
     },
     title: {
         fontSize: 20,
         fontWeight: 'bold',
         alignSelf: 'center',
+        color: 'rgb(41, 41, 95)',
     },
     separator: {
         marginVertical: 30,
@@ -101,6 +103,7 @@ const styles = StyleSheet.create({
     section: {
         marginLeft: 30,
         marginBottom: 5,
+        color: 'rgb(41, 41, 95)',
     },
     input: {
         alignSelf: 'center',
@@ -109,6 +112,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#777',
         marginBottom: 5,
+        color:'black',
     },
     blockButton: {
         height: 50,
