@@ -3,12 +3,13 @@ import { Platform, StyleSheet, Pressable } from 'react-native';
 import React, {useState} from 'react';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
-import {TextInput} from 'react-native';
-import { useColorScheme, Image } from 'react-native';
+import {TextInput, Image} from 'react-native';
+import { useColorScheme } from 'react-native';
 import Navigation from '../navigation';
 import { RootStackScreenProps } from '../types';
 import { setSignedIn } from './TabOneScreen';
 import { checkLogin } from '../components/makeAccount';
+
 
 export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
   const [text, setText] = useState('');
@@ -16,10 +17,12 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
   const [name, setName] = useState("");
   return (
     <View style={styles.container}>
-      
+      <View style={styles.logo}>
+      <Image source={require('../assets/images/logo-color.png')} />
+      </View>
       <Text style={styles.title}>Login</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      
+      <View style={styles.separator} lightColor="#f4c5cc" darkColor="rgba(41,41,95,0.1)" />
+
       
       <TextInput style={styles.textInputStyle}
       /*style={{ color: scheme === 'dark' ? 'white' : 'black'}}*/
@@ -74,26 +77,38 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'rgb(204, 197, 244 )'
   },
   title: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
   },
   separator: {
-    marginVertical: 30,
-    height: 1,
+    marginVertical: 3,
+    height: 0,
     width: '80%',
   },
   textInputStyle: {
-    height: 40,
-    borderColor: 'black',
+    height: 50,
+    width: 250,
+    borderColor: 'rgb(41, 41, 95)',
     borderWidth: 2,
-    borderRadius: 10,
-    marginVertical: 5,
-    
-    
+    borderRadius: 40,
+    marginVertical: 3,
+  },
+  submitStyle: {
+    fontWeight: 'bold',
+    marginTop: 16,
+    paddingVertical: 8,
+    borderWidth: 4,
+    borderColor: 'rgb(41, 41, 95)',
+    borderRadius: 6,
+    backgroundColor: '#61dafb',
+    color: 'rgb(204, 197, 244)',
+    textAlign: 'center',
+    fontSize: 30,
+  },
 
-    }
   
 
 

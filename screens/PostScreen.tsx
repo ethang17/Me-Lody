@@ -53,14 +53,15 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'rgb(204, 197, 244)',
   },
   input: {
     borderWidth: 1,
-    borderColor: '#777',
+    borderColor: 'rgb(41, 41, 95)',
     padding: 8,
     margin: 10,
     width: 200,
-    color: 'blue',
+    color: 'black',
   },
   title: {
     fontSize: 20,
@@ -71,4 +72,8 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  newText: {
+    fontSize: 12,
+    color:'black',
+  }
 });

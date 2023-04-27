@@ -8,14 +8,14 @@ export default function SettingsScreen({ navigation }: RootStackScreenProps<'Set
     <View style={styles.container}>
       <Text style={styles.title}>Settings</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <Text>This is where your settings tab will be</Text>
+      <Text>Settings tab will be right here</Text>
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
       <Pressable onPress={() => navigation.replace('Profile')}>
         <View style = {styles.blockButton} >
           <Text style = {styles.buttonLabel}>
-            Profile
+            User Profile
           </Text>
         </View>
       </Pressable>

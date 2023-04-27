@@ -1,4 +1,4 @@
-import { StyleSheet, Pressable } from 'react-native';
+import { StyleSheet, Pressable, Image } from 'react-native';
 import { useState } from 'react';
 import { getKeys } from '../components/makeAccount';
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -8,6 +8,7 @@ import { useRoute } from '@react-navigation/native';
 import PostScreen from './PostScreen';
 
 import { postedSong } from './PostScreen';
+
 
 
 
@@ -22,6 +23,7 @@ const route = useRoute();
 
   if (signedIn == true) {
     return (
+
       <View style={styles.container}>
         <Text style={styles.title}>Me-Lody</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
@@ -30,7 +32,8 @@ const route = useRoute();
         <View style={styles.separator} lightColor='#eee' darkColor="rgba(255,255,255,0.1)" />
       <Pressable onPress={() => navigation.replace('Post')} 
       style={styles.link}> 
-      <Text> Click me to post a song!</Text></Pressable>
+      <Text style={styles.otherText}> Click me to post a song!</Text></Pressable>
+      <Image source={require('../assets/images/blond.png')} />
       </View>
     );
   }
@@ -52,10 +55,17 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'rgb(204, 197, 244 )'
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: 'rgb(41, 41, 95 )'
+  },
+  otherText:{
+    fontsize: 12,
+    fontWeight: 'bold',
+    color: 'rgb(41, 41, 95 )'
   },
   separator: {
     marginVertical: 30,
