@@ -4,11 +4,16 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import Navigation from '../navigation';
-let mayKnow: JSX.Element[] = [] 
-let friends: JSX.Element[] = []
+import { Alert } from 'react-native/Libraries/Alert/Alert';
+
 let source:string = '../assets/images/whitePlus.png'
+let added : boolean = false
 export default function TabTwoScreen({ navigation }: RootTabScreenProps<'TabTwo'>) {
-  let friend1 = new FriendTile("Ethan", "1/22/23")
+  if( added == false){
+    addBasic()
+    added = true
+  }
+
 
 
   return (
@@ -29,13 +34,20 @@ class FriendTile{
   name:string
   joinDate:string
   picture:string
-  friends : boolean
-  constructor(name:string, joinDate: string, picture: string = '', friends: boolean = false){
+  friend : boolean
+  constructor(name:string, joinDate: string, picture: string = '', friend: boolean = false){
     this.name = name
     this.joinDate = joinDate
     this.picture = picture
-    this.friends = friends
-    mayKnow.push(this.card())
+    this.friend = friend
+    if(friend == true){
+      friends.push(this.card())
+    }
+    else{
+      mayKnow.push(this.card())
+    }
+
+
 
   }
 
@@ -50,7 +62,7 @@ class FriendTile{
           </View> 
           <Image source={{uri: "https://wallpapers.com/images/high/blank-default-pfp-wue0zko1dfxs9z2c.webp"}} style = {styles.friendTileImage}/>
           <TouchableOpacity style = {styles.addFriend} onPress={() => {
-            friends.push(this.card())          }}>          
+            friends.push(this.card())}}>          
             <Image source={require(source)} style={styles.plus}/>
           </TouchableOpacity>
         </View>
@@ -59,7 +71,13 @@ class FriendTile{
     )
   }
 }
+let mayKnow: JSX.Element[] = [] 
+let friends: JSX.Element[] = []
 
+function addBasic(){
+  let friend1 = new FriendTile("Ethan", "1/2/23")
+  let friend2 = new FriendTile("John", "1/2/23", undefined, true)
+}
 
 const styles = StyleSheet.create({
   container: {
