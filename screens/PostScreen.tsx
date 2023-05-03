@@ -13,55 +13,15 @@ let postArtist:string
 let postPhoto:string
 let userPost: JSX.Element
 let saved :boolean  = false
+export function getSaved(){
+  return saved
+}
+export function getUserPost(){
+  return userPost
+}
 export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>) {
     const [song, setSong] = useState('song')
     let test = new Post('postSong', "postArtist", "postPhoto")
-
-
-    if (saved == false){
-      return (
-        <View style={styles.container}>
-          <TextInput 
-          style={styles.input}
-          placeholder='Enter a Song' 
-          onChangeText={(val) => {
-            setSong(val)
-            postSong = val
-          }
-          }/>
-          <TextInput 
-          style={styles.input}
-          placeholder='Enter the Artist' 
-          onChangeText={(val) => {
-            setSong(val)
-            postSong = val
-          }
-          }/>
-          <TextInput 
-          style={styles.input}
-          placeholder='Enter a Photo' 
-          onChangeText={(val) => {
-            postSong = val
-          }
-          }/>
-          
-
-          <Text style={styles.newText}> The song you will post is: {song}</Text>
-
-          <Button
-              title='Post Song'
-              onPress={() =>{
-                
-                test = new Post(postSong, postArtist, postPhoto)
-                saved = true
-                userPost = test.card()
-                navigation.replace('Post')
-              }} />
-
-        </View>
-      )
-    }
-    else{
       return (
         <View style={styles.container}>
           <TextInput 
@@ -84,7 +44,6 @@ export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>)
           style={styles.input}
           placeholder='Enter a Photo' 
           onChangeText={(val) => {
-            setSong(val)
             postPhoto = val
           }
           }/>
@@ -95,15 +54,17 @@ export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>)
           <Button
               title='Post Song'
               onPress={() =>{
+                
+                test = new Post(postSong, postArtist, postPhoto)
                 saved = true
+                userPost = test.card()
+                navigation.replace('Root')
               }} />
-              {test.card()}
+
         </View>
       )
     }
-       
-        
-      };
+;
 
       
 class Post{
@@ -118,6 +79,10 @@ class Post{
   }
 
   card(){
+    console.log("Song Name: ", this.songName)
+    console.log("Song Artist: ", this.artist)
+    console.log("Song Photo: ", this.picture)
+    
     return(
       <View style = {styles.songBase}>
         <View style = {styles.songData}>
@@ -126,7 +91,7 @@ class Post{
           <Text style = {styles.songInfo}>Artist: {this.artist}</Text>
         </View>
         <View style = {styles.songPhoto}>
-          <Image source={require('../assets/images/icon.png')} style = {styles.songPhoto}/>
+          <Image source={{uri: this.picture}} style = {styles.songPhoto}/>
         </View>
       </View>
     )

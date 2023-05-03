@@ -5,22 +5,34 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import { useRoute } from '@react-navigation/native';
-
+import { getUserPost, getSaved } from './PostScreen';
 
 let signedIn = false
 export function setSignedIn(bool: boolean){
   signedIn = bool
 }
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
-const route = useRoute();
+let posts: JSX.Element[] = []
 
+function setUser(post: JSX.Element){
+  
+}
+export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+  const route = useRoute();
+  posts[0] = (
+    <View>
+        <Text style={styles.otherText}>Here is where you will find your friends' posts for the day</Text>
+    </View>
+  )
+  if (getSaved() == true){
+    posts[0] = getUserPost()
+  }
   if (signedIn == true) {
     return (
 
       <View style={styles.container}>
         <Text style={styles.title}>Me-Lody</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        <Text style={styles.otherText}>Here is where you will find your friends' posts for the day</Text>
+        {posts}
         <View style={styles.separator} lightColor='#eee' darkColor="rgba(255,255,255,0.1)" />
       <Pressable onPress={() => navigation.replace('Post')} 
       style={styles.link}> 
@@ -39,6 +51,7 @@ const route = useRoute();
     navigation.replace('Login')
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -71,3 +84,4 @@ const styles = StyleSheet.create({
     color: 'blue',
   }
 });
+
