@@ -19,7 +19,7 @@ function setUser(post: JSX.Element){
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   const route = useRoute();
   posts[0] = (
-    <View>
+    <View style = {styles.postHolder}>
         <Text style={styles.otherText}>Here is where you will find your friends' posts for the day</Text>
     </View>
   )
@@ -56,6 +56,11 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgb(204, 197, 244 )'
+  },
+  postHolder:{
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgb(204, 197, 244 )'
