@@ -19,6 +19,13 @@ export default function SettingsScreen({ navigation }: RootStackScreenProps<'Set
           </Text>
         </View>
       </Pressable>
+      <Pressable onPress={() => navigation.replace('Privacy')}>
+        <View style = {styles.blockButton} >
+          <Text style = {styles.buttonLabel}>
+            Privacy Terms
+          </Text>
+        </View>
+      </Pressable>
     </View>
 
   );
@@ -43,7 +50,7 @@ const styles = StyleSheet.create({
   },
   blockButton: {
     height: 50,
-    width: 100,
+    width: 150,
     backgroundColor: 'rgb(41, 41, 95)',
     alignItems: 'center',
     paddingVertical: 12,
