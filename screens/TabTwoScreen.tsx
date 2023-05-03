@@ -18,7 +18,12 @@ export default function TabTwoScreen({ navigation }: RootTabScreenProps<'TabTwo'
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Friends</Text>
+
+      <TouchableOpacity onPress={() => {
+        navigation.replace('Root')
+      }}>
+        <Text style={styles.title}>Friends</Text>
+        </TouchableOpacity>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       {friends}
       <Text style={styles.title}>People You May Know</Text>  
@@ -52,7 +57,9 @@ class FriendTile{
   }
 
   card(){
+    const refresh = () => window.location.reload()
     return(
+
       <View style = {styles.friendTileBase}>
       <View style = {styles.friendTileBorder}/>
         <View style = {styles.friendTileContent}>
@@ -62,7 +69,9 @@ class FriendTile{
           </View> 
           <Image source={{uri: "https://wallpapers.com/images/high/blank-default-pfp-wue0zko1dfxs9z2c.webp"}} style = {styles.friendTileImage}/>
           <TouchableOpacity style = {styles.addFriend} onPress={() => {
-            friends.push(this.card())}}>          
+            friends.push(this.card())
+            refresh
+            }}>          
             <Image source={require(source)} style={styles.plus}/>
           </TouchableOpacity>
         </View>
@@ -73,6 +82,9 @@ class FriendTile{
 }
 let mayKnow: JSX.Element[] = [] 
 let friends: JSX.Element[] = []
+
+
+
 
 function addBasic(){
   let friend1 = new FriendTile("Ethan", "1/2/23")

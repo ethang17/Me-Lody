@@ -17,9 +17,9 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
   const [name, setName] = useState("");
   return (
     <View style={styles.container}>
-      <View style={styles.logo}>
+
       <Image source={require('../assets/images/logo-color.png')} />
-      </View>
+
       <Text style={styles.title}>Login</Text>
       <View style={styles.separator} lightColor="#f4c5cc" darkColor="rgba(41,41,95,0.1)" />
 

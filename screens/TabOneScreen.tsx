@@ -7,7 +7,7 @@ import { RootTabScreenProps } from '../types';
 import { useRoute } from '@react-navigation/native';
 
 
-let signedIn = true
+let signedIn = false
 export function setSignedIn(bool: boolean){
   signedIn = bool
 }
