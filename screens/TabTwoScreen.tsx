@@ -19,15 +19,12 @@ export default function TabTwoScreen({ navigation }: RootTabScreenProps<'TabTwo'
   return (
     <View style={styles.container}>
 
-      <TouchableOpacity onPress={() => {
-        navigation.replace('Root')
-      }}>
         <Text style={styles.title}>Friends</Text>
-        </TouchableOpacity>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+
+      <View style={styles.separator}/>
       {friends}
       <Text style={styles.title}>People You May Know</Text>  
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />      
+      <View style={styles.separator}/>      
       {mayKnow}
       
     </View>
@@ -95,17 +92,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'rgb(204, 197, 244)',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: 'rgb(41, 41, 95)',
+    marginTop: 100
   },
   separator: {
     marginVertical: 30,
     height: 1,
     width: '80%',
-  },
+    alignSelf: 'center',
+    backgroundColor:"rgb(41, 41, 95 )"
+},
   friendTileBase:{
     width: "80%",
     height: 100,

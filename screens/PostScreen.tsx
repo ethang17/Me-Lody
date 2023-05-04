@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, TextInput, SafeAreaView, Pressable, Button, Image } from 'react-native';
+import { Platform, StyleSheet, TextInput, SafeAreaView, Pressable, TouchableOpacity, Image } from 'react-native';
 import { useState } from 'react';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -27,6 +27,7 @@ export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>)
           <TextInput 
           style={styles.input}
           placeholder='Enter a Song' 
+          placeholderTextColor="rgb(41, 41, 95 )"
           onChangeText={(val) => {
             setSong(val)
             postSong = val
@@ -35,6 +36,7 @@ export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>)
           <TextInput 
           style={styles.input}
           placeholder='Enter the Artist' 
+          placeholderTextColor="rgb(41, 41, 95 )"
           onChangeText={(val) => {
             setSong(val)
             postArtist = val
@@ -43,6 +45,7 @@ export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>)
           <TextInput 
           style={styles.input}
           placeholder='Enter a Photo' 
+          placeholderTextColor="rgb(41, 41, 95 )"
           onChangeText={(val) => {
             postPhoto = val
           }
@@ -51,15 +54,17 @@ export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>)
 
           <Text style={styles.newText}> The song you will post is: {song}</Text>
 
-          <Button
-              title='Post Song'
+          <TouchableOpacity style = {styles.button}
+
               onPress={() =>{
                 
                 test = new Post(postSong, postArtist, postPhoto)
                 saved = true
                 userPost = test.card()
                 navigation.replace('Root')
-              }} />
+              }} >
+                <Text style = {styles.buttonText}>Post Song</Text>
+                </TouchableOpacity>
 
         </View>
       )
@@ -106,12 +111,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(204, 197, 244)',
   },
   input: {
-    borderWidth: 1,
-    borderColor: 'rgb(41, 41, 95)',
-    padding: 8,
-    margin: 10,
-    width: 200,
-    color: 'black',
+    height: 40,
+    width: "80%",
+    alignSelf:"center",
+    borderColor: 'rgb(41, 41, 95 )',
+    borderWidth: 2,
+    borderRadius: 10,
+    marginVertical: 5,
+    textAlign: 'center',
+    color:"rgb(41, 41, 95 )",
   },
   title: {
     fontSize: 20,
@@ -162,5 +170,22 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     color: 'rgb(204, 197, 244 )',
     marginRight: 20
-  }
+  },
+  button: {
+    height: 40,
+    width: 200,
+    backgroundColor: "rgb(41, 41, 95 )",
+    borderColor: "rgb(204, 197, 244 )",
+    borderWidth: 2,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 5,
+    alignSelf: "center"
+  },
+  buttonText: {
+    color: "rgb(204, 197, 244 )",
+    fontWeight: "bold",
+    margin: 5,
+  },
 });

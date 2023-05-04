@@ -7,6 +7,7 @@ import { RootTabScreenProps } from '../types';
 import { useRoute } from '@react-navigation/native';
 import { getUserPost, getSaved } from './PostScreen';
 
+/* Turn to true during testing if you want to not have to login*/
 let signedIn = true
 export function setSignedIn(bool: boolean){
   signedIn = bool
@@ -28,24 +29,18 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
       <ScrollView>
       <View style={styles.container}>
         <Text style={styles.title}>Me-Lody</Text>
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+        <View style={styles.separator} />
         {posts}
-        <View style={styles.separator} lightColor='#eee' darkColor="rgba(255,255,255,0.1)" />
+        <View style={styles.separator}/>
       <Pressable onPress={() => navigation.replace('Post')} 
       style={styles.link}> 
       <Text style={styles.otherText}> Click me to post a song!</Text></Pressable>
-      <Image source={require('../assets/images/blond.png')} />
       </View>
       </ScrollView>
     );
   }
   else {
-    <View style={styles.container}>
-    <Text style={styles.title}>Me-Lody</Text>
-    <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-    <Text>Here is where you will find your friends' posts for the day</Text>
 
-  </View>
     navigation.replace('Login')
   }
 }
@@ -54,9 +49,8 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-
+    minHeight: 750,
     backgroundColor: 'rgb(204, 197, 244 )',
-    height: 2000,
 
   },
   postHolder:{
@@ -79,7 +73,9 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     height: 1,
     width: '80%',
-  },
+    alignSelf: 'center',
+    backgroundColor:"rgb(41, 41, 95 )"
+},
   link: {
     borderWidth: 1,
     borderColor: '#777',
