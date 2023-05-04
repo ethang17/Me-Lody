@@ -21,8 +21,9 @@ import PostScreen from '../screens/PostScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import LoginScreen from '../screens/LoginScreen';
-
+import UserPrivacyScreen from '../screens/UserPrivacyScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -46,6 +47,7 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="Profile" component={ProfileScreen} options={{ title: 'Profile' }} />
+      <Stack.Screen name="Privacy" component={UserPrivacyScreen} options={{ title: 'Privacy' }} />
 
         <Stack.Screen name="Post" component={PostScreen} options={{ title: 'Post' }} />
 

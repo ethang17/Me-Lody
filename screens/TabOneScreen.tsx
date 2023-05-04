@@ -1,58 +1,59 @@
-import { StyleSheet, Pressable, Image } from 'react-native';
+import { StyleSheet, Pressable, Image, ScrollView } from 'react-native';
 import { useState } from 'react';
 import { getKeys } from '../components/makeAccount';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import { useRoute } from '@react-navigation/native';
-import PostScreen from './PostScreen';
+import { getUserPost, getSaved } from './PostScreen';
 
-import { postedSong } from './PostScreen';
-
-
-
-
-let signedIn = false
+/* Turn to true during testing if you want to not have to login*/
+let signedIn = true
 export function setSignedIn(bool: boolean){
   signedIn = bool
 }
+let posts: JSX.Element[] = []
+
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
-
-const route = useRoute();
-
-
+  const route = useRoute();
+  posts[0] = (
+    <View style = {styles.postHolder}>
+        <Text style={styles.otherText}>Here is where you will find your friends' posts for the day</Text>
+    </View>
+  )
+  if (getSaved() == true){
+    posts[0] = getUserPost()
+  }
   if (signedIn == true) {
     return (
-
+      <ScrollView>
       <View style={styles.container}>
         <Text style={styles.title}>Me-Lody</Text>
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        <Text>Here is where you will find your friends' posts for the day</Text>
-        <Text>{postedSong()}</Text>
-        <View style={styles.separator} lightColor='#eee' darkColor="rgba(255,255,255,0.1)" />
+        <View style={styles.separator} />
+        {posts}
+        <View style={styles.separator}/>
       <Pressable onPress={() => navigation.replace('Post')} 
       style={styles.link}> 
       <Text style={styles.otherText}> Click me to post a song!</Text></Pressable>
-      <Image source={require('../assets/images/blond.png')} />
       </View>
+      </ScrollView>
     );
   }
   else {
-    <View style={styles.container}>
-    <Text style={styles.title}>Me-Lody</Text>
-    <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-    <Text>Here is where you will find your friends' posts for the day</Text>
-    
-    
 
-  </View>
     navigation.replace('Login')
   }
 }
 
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    alignItems: 'center',
+    minHeight: 750,
+    backgroundColor: 'rgb(204, 197, 244 )',
+
+  },
+  postHolder:{
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgb(204, 197, 244 )'
@@ -60,10 +61,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'rgb(41, 41, 95 )'
+    color: 'rgb(41, 41, 95 )',
+    marginTop:100,
   },
   otherText:{
-    fontsize: 12,
+    fontSize: 12,
     fontWeight: 'bold',
     color: 'rgb(41, 41, 95 )'
   },
@@ -71,7 +73,9 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     height: 1,
     width: '80%',
-  },
+    alignSelf: 'center',
+    backgroundColor:"rgb(41, 41, 95 )"
+},
   link: {
     borderWidth: 1,
     borderColor: '#777',
@@ -81,3 +85,4 @@ const styles = StyleSheet.create({
     color: 'blue',
   }
 });
+

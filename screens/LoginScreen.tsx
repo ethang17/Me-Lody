@@ -17,9 +17,9 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
   const [name, setName] = useState("");
   return (
     <View style={styles.container}>
-      <View style={styles.logo}>
-      <Image source={require('../assets/images/logo-color.png')} />
-      </View>
+
+      <Image source={require('../assets/images/logo-color.png')} style = {styles.picture}/>
+
       <Text style={styles.title}>Login</Text>
       <View style={styles.separator} lightColor="#f4c5cc" darkColor="rgba(41,41,95,0.1)" />
 
@@ -45,18 +45,18 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
 
         
       /> 
-      <Pressable
+      <Pressable style = {styles.button}
       onPress={() => {
         if(checkLogin(text, name)){
           setSignedIn(true)
           navigation.replace('Root')
         }
       }}>
-        <Text>SUBMIT</Text>
+        <Text style = {styles.buttonText}>SUBMIT</Text>
       </Pressable>
       <Pressable
       onPress={() => {navigation.replace('Register')}}>
-        <Text>I Do Not Have An Account</Text>
+        <Text style = {styles.doNot}>I Do Not Have An Account</Text>
       </Pressable>
       <Text style={{padding: 10, fontSize: 42}}>
         
@@ -76,12 +76,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: 'rgb(204, 197, 244 )'
   },
   title: {
     fontSize: 25,
     fontWeight: 'bold',
+    color: "rgb(41, 41, 95)",
+    marginTop: 20
   },
   separator: {
     marginVertical: 3,
@@ -89,25 +90,40 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   textInputStyle: {
-    height: 50,
-    width: 250,
-    borderColor: 'rgb(41, 41, 95)',
+    height: 40,
+    width: "80%",
+    alignSelf:"center",
+    borderColor: 'rgb(41, 41, 95 )',
     borderWidth: 2,
-    borderRadius: 40,
-    marginVertical: 3,
-  },
-  submitStyle: {
-    fontWeight: 'bold',
-    marginTop: 16,
-    paddingVertical: 8,
-    borderWidth: 4,
-    borderColor: 'rgb(41, 41, 95)',
-    borderRadius: 6,
-    backgroundColor: '#61dafb',
-    color: 'rgb(204, 197, 244)',
+    borderRadius: 10,
+    marginVertical: 10,
     textAlign: 'center',
-    fontSize: 30,
+    color:"rgb(41, 41, 95 )",
   },
+  button: {
+    height: 40,
+    width: 200,
+    backgroundColor: "rgb(41, 41, 95 )",
+    borderColor: "rgb(204, 197, 244 )",
+    borderWidth: 2,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 5,
+    alignSelf: "center"
+  },
+  buttonText: {
+    color: "rgb(204, 197, 244 )",
+    fontWeight: "bold",
+    margin: 5,
+  },
+  doNot:{
+    color: "rgb(41, 41, 95 )",
+    fontWeight: 'bold'
+  },
+  picture:{
+    marginTop: 50
+  }
 
   
 

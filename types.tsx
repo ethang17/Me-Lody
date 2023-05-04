@@ -20,7 +20,7 @@ export type RootStackParamList = {
   NotFound: undefined;
   Register: undefined;
   Login: undefined;
-
+  Privacy: undefined;
   Post: undefined;
 };
 

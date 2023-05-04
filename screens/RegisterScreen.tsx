@@ -11,7 +11,7 @@ export default function RegisterScreen({ navigation }: RootStackScreenProps<'Reg
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Register</Text>
-            <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+            <View style={styles.separator}/>
             <Text style={styles.section}>FIRST NAME:</Text>
             <TextInput style={styles.textInputStyle}
                 placeholder='e.g. John'
@@ -92,36 +92,36 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor:"#111"
+        backgroundColor:'rgb(204, 197, 244 )'
     },
     title: {
         fontSize: 25,
         fontWeight: 'bold',
         alignSelf: 'center',
-        color:"rgb(204, 197, 244 )"
+        color:"rgb(41, 41, 95 )"
     },
     separator: {
         marginVertical: 30,
         height: 1,
         width: '80%',
         alignSelf: 'center',
-        backgroundColor:"white"
+        backgroundColor:"rgb(41, 41, 95 )"
     },
     section: {
         marginLeft: 30,
         marginBottom: 5,
-        color:"rgb(204, 197, 244 )",
+        color:"rgb(41, 41, 95 )",
     },
     textInputStyle: {
         height: 40,
         width: "80%",
         alignSelf:"center",
-        borderColor: 'rgb(204, 197, 244 )',
+        borderColor: 'rgb(41, 41, 95 )',
         borderWidth: 2,
         borderRadius: 10,
         marginVertical: 5,
         textAlign: 'center',
-        color:"rgb(204, 197, 244 )",
+        color:"rgb(41, 41, 95 )",
       },
       buttonText: {
         color: "rgb(204, 197, 244 )",
