@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Camera, CameraType } from 'expo-camera';
 
 export default function ProfileScreen() {
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState('');
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
 

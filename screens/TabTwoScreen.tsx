@@ -5,6 +5,8 @@ import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import Navigation from '../navigation';
 import { Alert } from 'react-native/Libraries/Alert/Alert';
+import { Post } from './PostScreen';
+import { addPost } from './TabOneScreen';
 
 let source:string = '../assets/images/whitePlus.png'
 let added : boolean = false
@@ -37,11 +39,15 @@ class FriendTile{
   joinDate:string
   picture:string
   friend : boolean
-  constructor(name:string, joinDate: string, picture: string = '', friend: boolean = false){
+  post: Post
+  posted : boolean
+  constructor(name:string, joinDate: string,post : Post,  picture: string = '', friend: boolean = false, posted: boolean = false){
     this.name = name
     this.joinDate = joinDate
     this.picture = picture
     this.friend = friend
+    this.post = post
+    this.posted = posted
     if(friend == true){
       friends.push(this.card())
     }
@@ -67,7 +73,11 @@ class FriendTile{
           <Image source={{uri: "https://wallpapers.com/images/high/blank-default-pfp-wue0zko1dfxs9z2c.webp"}} style = {styles.friendTileImage}/>
           <TouchableOpacity style = {styles.addFriend} onPress={() => {
             friends.push(this.card())
-            refresh
+            if(this.posted == false){
+              addPost(this.post.card())
+              this.posted = true
+            }
+            
             }}>          
             <Image source={require(source)} style={styles.plus}/>
           </TouchableOpacity>
@@ -84,8 +94,10 @@ let friends: JSX.Element[] = []
 
 
 function addBasic(){
-  let friend1 = new FriendTile("Ethan", "1/2/23")
-  let friend2 = new FriendTile("John", "1/2/23", undefined, true)
+  let EthanPost = new Post("Mr. Telephone Man", "New Edition", "https://upload.wikimedia.org/wikipedia/en/8/83/NE_MTM.jpeg", "Ethan")
+  let JoePost = new Post("golden hour",'JVKE', "https://i1.sndcdn.com/artworks-oEqf1CL9PnD5-0-t500x500.jpg", "Joe")
+  let friend1 = new FriendTile("Ethan", "1/2/23", EthanPost)
+  let friend2 = new FriendTile("Joe", "1/2/23",JoePost,  undefined)
 }
 
 const styles = StyleSheet.create({
@@ -115,6 +127,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "#111",
     flexDirection: 'column',
+
   },
   friendTileBorder:{
     width: "100%",

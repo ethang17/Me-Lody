@@ -8,12 +8,15 @@ import { useRoute } from '@react-navigation/native';
 import { getUserPost, getSaved } from './PostScreen';
 
 /* Turn to true during testing if you want to not have to login*/
-let signedIn = true
+let signedIn = false
 export function setSignedIn(bool: boolean){
   signedIn = bool
 }
 let posts: JSX.Element[] = []
-
+export function addPost(card: JSX.Element){
+  let index = posts.length
+  posts[index] = card
+}
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   const route = useRoute();
   posts[0] = (
