@@ -7,6 +7,10 @@ import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 import { Camera, CameraType } from 'expo-camera';
 
+let myPost: JSX.Element = <View><Text>Not Made</Text></View>
+export function setPost(post:JSX.Element){
+  myPost = post
+}
 export default function ProfileScreen() {
   const [image, setImage] = useState('');
   const [type, setType] = useState(CameraType.back);
@@ -40,7 +44,7 @@ export default function ProfileScreen() {
 
 
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
-      <Text>{checkLogin()}</Text>
+      {myPost}
     </View>
   );
 }

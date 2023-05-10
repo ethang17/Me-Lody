@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { CompositeScreenProps } from '@react-navigation/native';
 import { RootStackScreenProps } from '../types';
 import { getCurrentUser} from '../components/makeAccount';
+import { setPost } from './ProfileScreen';
 
 let postSong:string
 let postArtist:string
@@ -62,6 +63,7 @@ export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>)
                 saved = true
                 userPost = test.card()
                 navigation.replace('Root')
+                setPost(test.card())
               }} >
                 <Text style = {styles.buttonText}>Post Song</Text>
                 </TouchableOpacity>
