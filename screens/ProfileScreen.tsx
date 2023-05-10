@@ -7,8 +7,12 @@ import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 import { Camera, CameraType } from 'expo-camera';
 
+let myPost: JSX.Element = <View><Text>Not Made</Text></View>
+export function setPost(post:JSX.Element){
+  myPost = post
+}
 export default function ProfileScreen() {
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("null");
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
 
@@ -35,12 +39,14 @@ export default function ProfileScreen() {
       <Text style={styles.title}>Profile</Text>
       <Button title="Pick an image to upload as your profile picture" onPress={pickImage} />
       {image && <><Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
-    <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" /><Text style={styles.infoText}>This is your profile</Text><Text style={styles.infoText}>User: {getCurrentUser()}</Text>
-    </>
+    </>}
+    <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+    <Text style={styles.infoText}>This is your profile</Text>
+    <Text style={styles.infoText}>User: {getCurrentUser()}</Text>
+    <Image source={{uri: image}} style={{ width: 200, height: 200 }} />
 
-      /* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
-      <Text>{checkLogin()}</Text>
+      {myPost}
     </View>
   );
 }
