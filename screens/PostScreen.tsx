@@ -72,15 +72,19 @@ export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>)
 ;
 
       
-class Post{
+export class Post{
   songName:string
   artist:string
   picture:string
-  constructor(songName:string, artist: string,  picture: string){
+  poster: string
+  constructor(songName:string, artist: string,  picture: string, poster: string = ''){
     this.songName = songName
     this.artist = artist
     this.picture = picture
-    
+    this.poster = poster
+    if (poster == ''){
+      this.poster = getCurrentUser()
+    }
   }
 
   card(){
@@ -91,7 +95,7 @@ class Post{
     return(
       <View style = {styles.songBase}>
         <View style = {styles.songData}>
-          <Text style = {styles.songPoster}> Posted by : {getCurrentUser()}</Text>
+          <Text style = {styles.songPoster}> Posted by : {this.poster}</Text>
           <Text style = {styles.songInfo}>Song : {this.songName}</Text>
           <Text style = {styles.songInfo}>Artist: {this.artist}</Text>
         </View>
@@ -141,7 +145,8 @@ const styles = StyleSheet.create({
     borderWidth: 10,
     borderRadius: 45,
     flexDirection: 'column',
-    backgroundColor: "#111"
+    backgroundColor: "#111",
+    marginVertical: 5,
   },
   songData:{
     flex: 1,

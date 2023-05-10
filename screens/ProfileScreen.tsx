@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Camera, CameraType } from 'expo-camera';
 
 export default function ProfileScreen() {
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState('');
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
 
@@ -34,11 +34,11 @@ export default function ProfileScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Profile</Text>
       <Button title="Pick an image to upload as your profile picture" onPress={pickImage} />
-      {image && <><Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
-    <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" /><Text style={styles.infoText}>This is your profile</Text><Text style={styles.infoText}>User: {getCurrentUser()}</Text>
-    </>
+      {image && <><Image source={{ uri: image }} style={{ width: 200, height: 200 }} /> </>}
+    <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+    <Text style={styles.infoText}>This is your profile</Text><Text style={styles.infoText}>User: {getCurrentUser()}</Text>
 
-      /* Use a light status bar on iOS to account for the black space above the modal */}
+
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
       <Text>{checkLogin()}</Text>
     </View>
