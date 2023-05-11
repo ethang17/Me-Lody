@@ -22,7 +22,7 @@ export default function SettingsScreen({ navigation }: RootStackScreenProps<'Set
       <Pressable onPress={() => navigation.replace('Privacy')}>
         <View style = {styles.blockButton} >
           <Text style = {styles.buttonLabel}>
-            Privacy Terms and Agreement
+            Privacy
           </Text>
         </View>
       </Pressable>
