@@ -102,6 +102,7 @@ class FriendTile{
 }
 let mayKnow: JSX.Element[] = [] 
 let friends: JSX.Element[] = []
+/* ETHAN TECH DEMO*/
 function removeCard(card: JSX.Element, array:JSX.Element[]){
   console.log("Removing")
   let index = 0
