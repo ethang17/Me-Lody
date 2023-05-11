@@ -1,4 +1,4 @@
-import { StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, TouchableOpacity, ScrollView, Touchable } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -7,7 +7,9 @@ import Navigation from '../navigation';
 import { Alert } from 'react-native/Libraries/Alert/Alert';
 import { Post } from './PostScreen';
 import { addPost } from './TabOneScreen';
-
+import { createRef } from 'react';
+import { RefObject } from 'react';
+import ProfileScreen from './ProfileScreen';
 let source:string = '../assets/images/whitePlus.png'
 let added : boolean = false
 export default function TabTwoScreen({ navigation }: RootTabScreenProps<'TabTwo'>) {
@@ -19,6 +21,7 @@ export default function TabTwoScreen({ navigation }: RootTabScreenProps<'TabTwo'
 
 
   return (
+    <ScrollView>
     <View style={styles.container}>
 
         <Text style={styles.title}>Friends</Text>
@@ -28,8 +31,14 @@ export default function TabTwoScreen({ navigation }: RootTabScreenProps<'TabTwo'
       <Text style={styles.title}>People You May Know</Text>  
       <View style={styles.separator}/>      
       {mayKnow}
+      <TouchableOpacity style = {styles.button}
+      onPress={()=>{navigation.replace('Root')}}
+      >
+        <Text style = {styles.buttonText}>Reload</Text>
+      </TouchableOpacity>
       
     </View>
+    </ScrollView>
   );
 }
 
@@ -41,6 +50,7 @@ class FriendTile{
   friend : boolean
   post: Post
   posted : boolean
+
   constructor(name:string, joinDate: string,post : Post,  picture: string = '', friend: boolean = false, posted: boolean = false){
     this.name = name
     this.joinDate = joinDate
@@ -48,6 +58,8 @@ class FriendTile{
     this.friend = friend
     this.post = post
     this.posted = posted
+
+    
     if(friend == true){
       friends.push(this.card())
     }
@@ -63,7 +75,7 @@ class FriendTile{
     const refresh = () => window.location.reload()
     return(
 
-      <View style = {styles.friendTileBase}>
+      <View style = {styles.friendTileBase} >
       <View style = {styles.friendTileBorder}/>
         <View style = {styles.friendTileContent}>
           <View style = {styles.friendTileText}>
@@ -73,6 +85,7 @@ class FriendTile{
           <Image source={{uri: "https://wallpapers.com/images/high/blank-default-pfp-wue0zko1dfxs9z2c.webp"}} style = {styles.friendTileImage}/>
           <TouchableOpacity style = {styles.addFriend} onPress={() => {
             friends.push(this.card())
+            removeCard(this.card(), mayKnow)
             if(this.posted == false){
               addPost(this.post.card())
               this.posted = true
@@ -89,7 +102,18 @@ class FriendTile{
 }
 let mayKnow: JSX.Element[] = [] 
 let friends: JSX.Element[] = []
-
+function removeCard(card: JSX.Element, array:JSX.Element[]){
+  console.log("Removing")
+  let index = 0
+  array.forEach(element => {
+    if (element.key == card.key){
+      array.splice(index, 1)
+      console.log("Removing", index)
+    }
+    index += 1
+    console.log(index)
+  });
+}
 
 
 
@@ -102,7 +126,7 @@ function addBasic(){
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    minHeight: 750,
     alignItems: 'center',
     backgroundColor: 'rgb(204, 197, 244)',
   },
@@ -178,6 +202,23 @@ const styles = StyleSheet.create({
     height: 30,
     alignSelf: 'center',
     marginTop: '30%'
-  }
+  },
+  button: {
+    height: 40,
+    width: 200,
+    backgroundColor: "rgb(41, 41, 95 )",
+    borderColor: "rgb(204, 197, 244 )",
+    borderWidth: 2,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 5,
+    alignSelf: "center"
+  },
+  buttonText: {
+    color: "rgb(204, 197, 244 )",
+    fontWeight: "bold",
+    margin: 5,
+  },
   
 });
