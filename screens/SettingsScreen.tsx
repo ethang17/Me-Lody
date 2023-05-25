@@ -26,6 +26,20 @@ export default function SettingsScreen({ navigation }: RootStackScreenProps<'Set
           </Text>
         </View>
       </Pressable>
+      <Pressable onPress={() => navigation.replace('User')}>
+        <View style = {styles.blockButton} >
+          <Text style = {styles.buttonLabel}>
+            User Manual
+          </Text>
+        </View>
+      </Pressable>
+      <Pressable onPress={() => navigation.replace('System')}>
+        <View style = {styles.blockButton} >
+          <Text style = {styles.buttonLabel}>
+            Systems Manual
+          </Text>
+        </View>
+      </Pressable>
     </View>
 
   );

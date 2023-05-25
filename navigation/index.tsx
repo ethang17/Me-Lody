@@ -23,6 +23,9 @@ import LinkingConfiguration from './LinkingConfiguration';
 import LoginScreen from '../screens/LoginScreen';
 import UserPrivacyScreen from '../screens/UserPrivacyScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import UserScreen from '../screens/UserScreen';
+import SystemsScreen from '../screens/SystemsScreen';
+
 
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
@@ -48,6 +51,9 @@ function RootNavigator() {
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="Profile" component={ProfileScreen} options={{ title: 'Profile' }} />
       <Stack.Screen name="Privacy" component={UserPrivacyScreen} options={{ title: 'Privacy' }} />
+      <Stack.Screen name="User" component={UserScreen} options={{ title: 'User' }} />
+      <Stack.Screen name="System" component={SystemsScreen} options={{ title: 'System' }} />
+
 
         <Stack.Screen name="Post" component={PostScreen} options={{ title: 'Post' }} />
 

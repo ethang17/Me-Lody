@@ -31,7 +31,9 @@ const linking: LinkingOptions<RootStackParamList> = {
       NotFound: '*',
       Profile: 'Profile',
       Post: 'Post',
-      Register: 'Register'
+      Register: 'Register',
+      User: 'User',
+      System: 'System',
     },
   },
 };
