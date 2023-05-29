@@ -17,6 +17,10 @@ let saved :boolean  = false
 export function getSaved(){
   return saved
 }
+export function setSaved(bool:boolean = false){
+  saved = bool
+}
+
 export function getUserPost(){
   return userPost
 }

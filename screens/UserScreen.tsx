@@ -25,12 +25,12 @@ export default function UserScreen({ navigation }: RootStackScreenProps<'User'>)
                   <Image source={require('../assets/images/APPPHOTOS-USER/IMG_7602.jpg')} style = {styles.picture}/>
                 </View>
                 <View style = {styles.textAndPhoto}>
-                  <Text style = {{width: '60%'}}>    Now that you are on your desired page, input your date into the tex inputs. In (1) input your First name. In (2) input your Last name. In (3) input your seried username. Be sure to remember your username, it will be required to log in. In (4) type in your email. In (5) type your password. In (6) retpye your password. Your account cannot be created if your passwords do not match. Aftre completeing your information, save your login using button (7). Press button (8) to sing into your account.</Text>
+                  <Text style = {{width: '60%'}}>    Now that you are on your desired page, input your date into the text inputs. In (1) input your First name. In (2) input your Last name. In (3) input your seried username. Be sure to remember your username, it will be required to log in. In (4) type in your email. In (5) type your password. In (6) retpye your password. Your account cannot be created if your passwords do not match. Aftre completeing your information, save your login using button (7). Press button (8) to sing into your account.</Text>
                   <Image source={require('../assets/images/APPPHOTOS-USER/IMG_7603.jpg')} style = {styles.picture}/>
                 </View>
                 <Text style = {styles.header}>Logging in:</Text>
                 <View style = {styles.textAndPhoto}>
-                  <Text style = {{width: '60%'}}>    In order to sign in to your account. Use the username you inputted while creatting your account in (1). Then, input the password you used during your account creation in (2). Press the submit button, (3) in order to continue to the app.</Text>
+                  <Text style = {{width: '60%'}}>    In order to sign in to your account. Use the username you inputted while creating your account in (1). Then, input the password you used during your account creation in (2). Press the submit button, (3) in order to continue to the app.</Text>
                   <Image source={require('../assets/images/APPPHOTOS-USER/IMG_7602.jpg')} style = {styles.picture}/>
                 </View>
                 <Text style = {styles.header}>Posting a Song:</Text>

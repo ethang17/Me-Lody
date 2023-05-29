@@ -5,7 +5,7 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import { useRoute } from '@react-navigation/native';
-import { getUserPost, getSaved } from './PostScreen';
+import { getUserPost, getSaved, setSaved } from './PostScreen';
 
 
 /* Turn to true during testing if you want to not have to login*/
@@ -39,6 +39,14 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
       <Pressable onPress={() => navigation.replace('Post')} 
       style={styles.link}> 
       <Text style={styles.otherText}> Click me to post a song!</Text></Pressable>
+      <Pressable
+      onPress={() => {
+        setSaved()
+        posts[0] = <View></View>
+      }}>
+        <Text>Delete Post</Text>
+      </Pressable>
+      
       </View>
       </ScrollView>
     );
