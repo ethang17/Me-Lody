@@ -1,17 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, Button, Image, TouchableOpacity, Pressable } from 'react-native';
 import { checkLogin } from '../components/makeAccount';
 import { getCurrentUser, getCurrentEmail, getCurrentFirsrt } from '../components/makeAccount';
 import { Text, View } from '../components/Themed';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 import { Camera, CameraType } from 'expo-camera';
+import { RootStackScreenProps } from '../types';
 
 let myPost: JSX.Element = <View><Text>Not Made</Text></View>
 export function setPost(post:JSX.Element){
   myPost = post
 }
-export default function ProfileScreen() {
+export default function ProfileScreen({ navigation }: RootStackScreenProps<'Profile'>) {
   const [image, setImage] = useState('https://wallpapers.com/images/high/blank-default-pfp-wue0zko1dfxs9z2c.webp');
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
@@ -41,6 +42,9 @@ export default function ProfileScreen() {
       <Button title="Pick an image to upload as your profile picture" onPress={pickImage} />
     <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
     <Text style={styles.infoText}>This is your profile</Text><Text style={styles.infoText}>User: {getCurrentUser()}</Text>
+    <Pressable onPress={() => {
+      navigation.replace('ChangeUser')
+    }}><Text style = {styles.change}>Change User</Text></Pressable>
 
 
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
@@ -70,5 +74,9 @@ const styles = StyleSheet.create({
   infoText:{
     fontSize: 16,
     color: 'rgb(41, 41, 95)'
+  },
+  change:{
+    color: "rgb(41, 41, 95 )",
+    fontWeight: 'bold'
   },
 });
