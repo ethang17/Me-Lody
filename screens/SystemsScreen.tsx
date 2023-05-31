@@ -13,7 +13,12 @@ export default function SystemsScreen({ navigation }: RootStackScreenProps<'Syst
 
                     <Text style = {styles.buttonText}>Home</Text>
                 </Pressable>
-            <Text style = {styles.title}>Systems Manual</Text>
+            <Text style = {styles.title}>Minimum hardware and software requirements:</Text>
+            <Text style = {styles.otherText}> A cellular device (Either Iphone or Android) with the expo go app downloaded. To install this app, head to the app store or google play store, and search "Expo Go". Then download and scan the QR code for our app to open it up.</Text>
+            <Text style = {styles.title}>Error Messages and Troubleshooting:</Text>
+            <Text style = {styles.otherText}>There should not be any error messages within the app. If one occurs, it is most likely involving the navigation. This can be found in the navigation tab. index.tsx and LinkingConfiguration.tsx link our screens together. If an error with this occurs, make sure each screen is linked to its correct location</Text>
+            <Text style = {styles.title}>Contact information:</Text>
+            <Text style = {styles.otherText}>edg45@drexel.edu | jnm323@drexel.edu | as5752@drexel.edu | jkn32@drexel.edu </Text>
             </View>
         </ScrollView>
     )
