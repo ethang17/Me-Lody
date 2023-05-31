@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet, Button, Image, TouchableOpacity, Pressable } from 'react-native';
 import { checkLogin } from '../components/makeAccount';
-import { getCurrentUser, getCurrentEmail, getCurrentFirsrt } from '../components/makeAccount';
+import { getCurrentUser, getCurrentEmail, getCurrentFirst } from '../components/makeAccount';
 import { Text, View } from '../components/Themed';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
@@ -39,13 +39,15 @@ export default function ProfileScreen({ navigation }: RootStackScreenProps<'Prof
     <View style={styles.container}>
       <Text style={styles.title}>Profile</Text>
       <Image source={{ uri: image }} style={{ width: 200, height: 200 }} /> 
-      <Button title="Pick an image to upload as your profile picture" onPress={pickImage} />
+      <Pressable style = {styles.button}  onPress={pickImage} >
+        <Text style = {styles.buttonText}>Change Photo</Text>
+      </Pressable>
     <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-    <Text style={styles.infoText}>This is your profile</Text><Text style={styles.infoText}>User: {getCurrentUser()}</Text>
-    <Pressable onPress={() => {
+    <Text style={styles.infoText}>Username: {getCurrentUser()}</Text>
+    <Pressable style ={styles.button} onPress={() => {
       navigation.replace('ChangeUser')
-    }}><Text style = {styles.change}>Change User</Text></Pressable>
-
+    }}><Text style = {styles.buttonText}>Change Username?</Text>
+    </Pressable>
 
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
       <Text>Your Current Post</Text>
@@ -58,13 +60,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: 'rgb(204, 197, 244)',
+    flexDirection: 'column',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     color: 'rgb(41, 41, 95)',
+    marginVertical: 20,
   },
   separator: {
     marginVertical: 30,
@@ -72,11 +75,28 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   infoText:{
-    fontSize: 16,
-    color: 'rgb(41, 41, 95)'
+    fontSize: 20,
+    color: 'rgb(41, 41, 95)',
   },
   change:{
     color: "rgb(41, 41, 95 )",
     fontWeight: 'bold'
+  },
+  button: {
+    height: 40,
+    width: 200,
+    backgroundColor: "rgb(41, 41, 95 )",
+    borderColor: "rgb(204, 197, 244 )",
+    borderWidth: 2,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 5,
+    alignSelf: "center"
+  },
+  buttonText: {
+    color: "rgb(204, 197, 244 )",
+    fontWeight: "bold",
+    margin: 5,
   },
 });
