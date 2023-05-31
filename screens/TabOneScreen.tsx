@@ -5,11 +5,12 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import { useRoute } from '@react-navigation/native';
-import { getUserPost, getSaved } from './PostScreen';
+import { getUserPost, getSaved, setUserPost, setSaved } from './PostScreen';
 
 
 /* Turn to true during testing if you want to not have to login*/
 let signedIn = false
+
 export function setSignedIn(bool: boolean){
   signedIn = bool
 }
@@ -22,26 +23,52 @@ export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'
   const route = useRoute();
   posts[0] = (
     <View style = {styles.postHolder}>
-        <Text style={styles.otherText}>Here is where you will find your friends' posts for the day</Text>
+        <Text style={styles.otherText}>You Have Not Posted Yet</Text>
     </View>
   )
   if (getSaved() == true){
     posts[0] = getUserPost()
   }
   if (signedIn == true) {
-    return (
-      <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.title}>Me-Lody</Text>
-        <View style={styles.separator} />
-        {posts}
-        <View style={styles.separator}/>
-      <Pressable onPress={() => navigation.replace('Post')} 
-      style={styles.link}> 
-      <Text style={styles.otherText}> Click me to post a song!</Text></Pressable>
-      </View>
-      </ScrollView>
-    );
+    if (getSaved() == false){
+      return (
+        <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Me-Lody</Text>
+          <View style={styles.separator} />
+          {posts}
+          <View style={styles.separator}/>
+        <Pressable onPress={() => navigation.replace('Post')} 
+        style={styles.link}> 
+        <Text style={styles.otherText}> Click me to post a song!</Text></Pressable>
+        </View>
+        </ScrollView>
+      );
+    }
+    else{
+      return (
+        <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Me-Lody</Text>
+          <View style={styles.separator} />
+          {posts}
+          <View style={styles.separator}/>
+        <Pressable onPress={() => {
+        setUserPost(
+        <View style = {styles.postHolder}>
+          <Text style={styles.otherText}>POST DELETED</Text>
+        </View>
+        )
+        setSaved(false)
+        navigation.replace('Root')} }
+        style={styles.link}> 
+        <Text style={styles.otherText}> Delete Previous Post</Text></Pressable>
+        </View>
+        </ScrollView>
+        
+      );
+    }
+
   }
   else {
 
@@ -71,7 +98,8 @@ const styles = StyleSheet.create({
   otherText:{
     fontSize: 12,
     fontWeight: 'bold',
-    color: 'rgb(41, 41, 95 )'
+    color: 'rgb(41, 41, 95 )',
+    alignSelf: 'center'
   },
   separator: {
     marginVertical: 30,
