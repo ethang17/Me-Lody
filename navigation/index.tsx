@@ -25,6 +25,7 @@ import UserPrivacyScreen from '../screens/UserPrivacyScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import UserScreen from '../screens/UserScreen';
 import SystemsScreen from '../screens/SystemsScreen';
+import ChangeUser from '../screens/ChangeUser';
 
 
 
@@ -65,6 +66,9 @@ function RootNavigator() {
       </Stack.Group>
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Login" component={LoginScreen} />
+      </Stack.Group>
+      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+        <Stack.Screen name="ChangeUser" component={ChangeUser} />
       </Stack.Group>
 
 

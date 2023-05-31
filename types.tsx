@@ -24,6 +24,7 @@ export type RootStackParamList = {
   Post: undefined;
   User: undefined;
   System: undefined;
+  ChangeUser: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

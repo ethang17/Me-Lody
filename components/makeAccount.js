@@ -68,6 +68,9 @@ export function checkLogin(user, pass){
 export function getCurrentUser(){
     return currentUser
 }
+export function setCurrentUser(input){
+    currentUser = input
+}
 export function getCurrentEmail(){
     return keys[currentUserKey][3]
 }

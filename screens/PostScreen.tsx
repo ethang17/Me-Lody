@@ -17,12 +17,15 @@ let saved :boolean  = false
 export function getSaved(){
   return saved
 }
-export function setSaved(bool:boolean = false){
-  saved = bool
+export function setSaved(state: boolean){
+  saved = state
 }
-
 export function getUserPost(){
   return userPost
+}
+export function setUserPost(element: JSX.Element){
+  userPost = element
+  setPost(element)
 }
 export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>) {
     const [song, setSong] = useState('song')
@@ -66,8 +69,8 @@ export default function PostScreen({ navigation }: RootStackScreenProps<'Post'>)
                 test = new Post(postSong, postArtist, postPhoto)
                 saved = true
                 userPost = test.card()
+                setUserPost(userPost)
                 navigation.replace('Root')
-                setPost(test.card())
               }} >
                 <Text style = {styles.buttonText}>Post Song</Text>
                 </TouchableOpacity>
